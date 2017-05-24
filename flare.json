@@ -1,0 +1,412 @@
+{
+  "name": "上海卫城",
+  "color": "1",
+  "children": [
+    {
+      "name": "股东",
+      "color": "2",
+      "children": [
+        {
+          "name": "对外股东",
+          "color":"2",
+          "children": [
+            {"name": "AgglomerativeCluster","color":"2", "size": 3938},
+            {"name": "CommunityStructure","color":"2", "size": 3812},
+            {"name": "HierarchicalCluster","color":"2", "size": 6714},
+            {"name": "MergeEdge","color":"2", "size": 743}
+          ]
+        },
+        {
+          "name": "graph",
+          "color":"2",
+          "children": [
+            {"name": "BetweennessCentrality", "color":"2","size": 3534},
+            {"name": "LinkDistance", "color":"2", "size": 5731},
+            {"name": "MaxFlowMinCut",  "color":"2","size": 7840},
+            {"name": "ShortestPaths", "color":"2", "size": 5914},
+            {"name": "SpanningTree",  "color":"2","size": 3416}
+          ]
+        },
+        {
+          "name": "optimization",
+          "color":"2",
+          "children": [
+            {"name": "AspectRatioBanker",  "color":"2","size": 7074}
+          ]
+        }
+      ]
+    },
+    {
+      "name": "对外股东",
+      "color":"3",
+      "children": [
+        {"name": "Easing", "color":"3", "size": 17010},
+        {"name": "FunctionSequence",  "color":"3","size": 5842},
+        {
+          "name": "interpolate",
+          "color":"3",
+          "children": [
+            {"name": "ArrayInterpolator", "color":"3", "size": 1983},
+            {"name": "ColorInterpolator","color":"3", "size": 2047},
+            {"name": "DateInterpolator","color":"3", "size": 1375},
+            {"name": "Interpolator","color":"3", "size": 8746},
+            {"name": "MatrixInterpolator","color":"3", "size": 2202},
+            {"name": "NumberInterpolator","color":"3", "size": 1382},
+            {"name": "ObjectInterpolator","color":"3", "size": 1629},
+            {"name": "PointInterpolator","color":"3", "size": 1675},
+            {"name": "RectangleInterpolator","color":"3", "size": 2042}
+          ]
+        },
+        {"name": "ISchedulable","color":"3", "size": 1041},
+        {"name": "Parallel","color":"3", "size": 5176},
+        {"name": "Pause", "color":"3","size": 449},
+        {"name": "Scheduler","color":"3", "size": 5593},
+        {"name": "Sequence", "color":"3","size": 5534},
+        {"name": "Transition", "color":"3","size": 9201},
+        {"name": "Transitioner", "color":"3","size": 19975},
+        {"name": "TransitionEvent","color":"3", "size": 1116},
+        {"name": "Tween","color":"3", "size": 6006}
+      ]
+    },
+    {
+      "name": "投资",
+      "color": "4",
+      "children": [
+        {
+          "name": "converters",
+          "color": "4",
+          "children": [
+            {"name": "Converters",  "color": "4","size": 721},
+            {"name": "DelimitedTextConverter", "color": "4", "size": 4294},
+            {"name": "GraphMLConverter",  "color": "4","size": 9800},
+            {"name": "IDataConverter", "color": "4", "size": 1314},
+            {"name": "JSONConverter", "color": "4", "size": 2220}
+          ]
+        },
+        {"name": "DataField", "color": "4", "size": 1759},
+        {"name": "DataSchema", "color": "4", "size": 2165},
+        {"name": "DataSet", "color": "4", "size": 586},
+        {"name": "DataSource", "color": "4", "size": 3331},
+        {"name": "DataTable",  "color": "4","size": 772},
+        {"name": "DataUtil", "color": "4", "size": 3322}
+      ]
+    },
+    {
+      "name": "招商引资",
+      "color": "5",
+      "children": [
+        {"name": "DirtySprite","color": "5", "size": 8833},
+        {"name": "LineSprite", "color": "5","size": 1732},
+        {"name": "RectSprite","color": "5", "size": 3623},
+        {"name": "TextSprite","color": "5", "size": 10066}
+      ]
+    },
+    {
+      "name": "大力推广",
+      "color": "6",
+      "children": [
+        {"name": "FlareVis","color": "6", "size": 4116}
+      ]
+    },
+    {
+      "name": "实力雄厚",
+      "color":"7",
+      "children": [
+        {"name": "DragForce", "color":"7","size": 1082},
+        {"name": "GravityForce","color":"7", "size": 1336},
+        {"name": "IForce", "color":"7","size": 319},
+        {"name": "NBodyForce", "color":"7","size": 10498},
+        {"name": "Particle","color":"7", "size": 2822},
+        {"name": "Simulation", "color":"7","size": 9983},
+        {"name": "Spring", "color":"7","size": 2213},
+        {"name": "SpringForce","color":"7", "size": 1681}
+      ]
+    },
+    {
+      "name": "祖国支持",
+      "color":"8",
+      "children": [
+        {"name": "AggregateExpression", "color":"8","size": 1616},
+        {"name": "And","color":"8", "size": 1027},
+        {"name": "Arithmetic", "color":"8","size": 3891},
+        {"name": "Average","color":"8", "size": 891},
+        {"name": "BinaryExpression","color":"8","size": 2893},
+        {"name": "Comparison","color":"8", "size": 5103},
+        {"name": "CompositeExpression","color":"8", "size": 3677},
+        {"name": "Count", "color":"8","size": 781},
+        {"name": "DateUtil","color":"8", "size": 4141},
+        {"name": "Distinct","color":"8", "size": 933},
+        {"name": "Expression", "color":"8","size": 5130},
+        {"name": "ExpressionIterator","color":"8", "size": 3617},
+        {"name": "Fn","color":"8", "size": 3240},
+        {"name": "If","color":"8", "size": 2732},
+        {"name": "IsA","color":"8", "size": 2039},
+        {"name": "Literal","color":"8", "size": 1214},
+        {"name": "Match","color":"8", "size": 3748},
+        {"name": "Maximum","color":"8", "size": 843},
+        {
+          "name": "methods",
+          "color":"8",
+          "children": [
+            {"name": "add","color":"8", "size": 593},
+            {"name": "and","color":"8", "size": 330},
+            {"name": "average","color":"8", "size": 287},
+            {"name": "count","color":"8", "size": 277},
+            {"name": "distinct","color":"8", "size": 292},
+            {"name": "div","color":"8", "size": 595},
+            {"name": "eq","color":"8", "size": 594},
+            {"name": "fn", "color":"8","size": 460},
+            {"name": "gt", "color":"8","size": 603},
+            {"name": "gte","color":"8", "size": 625},
+            {"name": "iff","color":"8", "size": 748},
+            {"name": "isa","color":"8", "size": 461},
+            {"name": "lt","color":"8", "size": 597},
+            {"name": "lte", "color":"8","size": 619},
+            {"name": "max", "color":"8","size": 283},
+            {"name": "min","color":"8", "size": 283},
+            {"name": "mod", "color":"8","size": 591},
+            {"name": "mul","color":"8", "size": 603},
+            {"name": "neq", "color":"8","size": 599},
+            {"name": "not","color":"8", "size": 386},
+            {"name": "or","color":"8", "size": 323},
+            {"name": "orderby","color":"8", "size": 307},
+            {"name": "range","color":"8", "size": 772},
+            {"name": "select", "color":"8","size": 296},
+            {"name": "stddev","color":"8", "size": 363},
+            {"name": "sub","color":"8", "size": 600},
+            {"name": "sum","color":"8", "size": 280},
+            {"name": "update","color":"8", "size": 307},
+            {"name": "variance", "color":"8","size": 335},
+            {"name": "where","color":"8", "size": 299},
+            {"name": "xor","color":"8", "size": 354},
+            {"name": "_", "color":"8","size": 264}
+          ]
+        },
+        {"name": "Minimum", "color":"8","size": 843},
+        {"name": "Not", "color":"8","size": 1554},
+        {"name": "Or","color":"8", "size": 970},
+        {"name": "Query","color":"8", "size": 13896},
+        {"name": "Range","color":"8", "size": 1594},
+        {"name": "StringUtil","color":"8", "size": 4130},
+        {"name": "Sum","color":"8", "size": 791},
+        {"name": "Variable","color":"8", "size": 1124},
+        {"name": "Variance","color":"8", "size": 1876},
+        {"name": "Xor", "color":"8","size": 1101}
+      ]
+    },
+    {
+      "name": "引进外资",
+      "color":"9",
+      "children": [
+        {"name": "IScaleMap","color":"9", "size": 2105},
+        {"name": "LinearScale","color":"9", "size": 1316},
+        {"name": "LogScale","color":"9", "size": 3151},
+        {"name": "OrdinalScale", "color":"9","size": 3770},
+        {"name": "QuantileScale", "color":"9","size": 2435},
+        {"name": "QuantitativeScale","color":"9", "size": 4839},
+        {"name": "RootScale","color":"9", "size": 1756},
+        {"name": "Scale","color":"9", "size": 4268},
+        {"name": "ScaleType","color":"9", "size": 1821},
+        {"name": "TimeScale", "color":"9","size": 5833}
+      ]
+    },
+    {
+      "name": "河南卫城",
+      "color":"10",
+      "children": [
+        {"name": "Arrays","color":"10", "size": 8258},
+        {"name": "Colors","color":"10", "size": 10001},
+        {"name": "Dates", "color":"10","size": 8217},
+        {"name": "Displays","color":"10", "size": 12555},
+        {"name": "Filter","color":"10", "size": 2324},
+        {"name": "Geometry", "color":"10","size": 10993},
+        {
+          "name": "heap",
+          "color":"10",
+          "children": [
+            {"name": "FibonacciHeap", "color":"10","size": 9354},
+            {"name": "HeapNode","color":"10", "size": 1233}
+          ]
+        },
+        {"name": "IEvaluable", "color":"10","size": 335},
+        {"name": "IPredicate","color":"10", "size": 383},
+        {"name": "IValueProxy","color":"10", "size": 874},
+        {
+          "name": "math",
+          "color":"10",
+          "children": [
+            {"name": "DenseMatrix", "color":"10","size": 3165},
+            {"name": "IMatrix","color":"10", "size": 2815},
+            {"name": "SparseMatrix","color":"10", "size": 3366}
+          ]
+        },
+        {"name": "Maths","color":"10", "size": 17705},
+        {"name": "Orientation","color":"10", "size": 1486},
+        {
+          "name": "palette",
+          "color":"10",
+          "children": [
+            {"name": "ColorPalette","color":"10", "size": 6367},
+            {"name": "Palette","color":"10", "size": 1229},
+            {"name": "ShapePalette","color":"10", "size": 2059},
+            {"name": "SizePalette","color":"10", "size": 2291}
+          ]
+        },
+        {"name": "Property","color":"10", "size": 5559},
+        {"name": "Shapes", "color":"10","size": 19118},
+        {"name": "Sort","color":"10", "size": 6887},
+        {"name": "Stats", "color":"10","size": 6557},
+        {"name": "Strings", "color":"10","size": 22026}
+      ]
+    },
+    {
+      "name": "加油",
+      "color":"11",
+      "children": [
+        {
+          "name": "axis",
+          "color":"11",
+          "children": [
+            {"name": "Axes",  "color":"11","size": 1302},
+            {"name": "Axis", "color":"11", "size": 24593},
+            {"name": "AxisGridLine", "color":"11", "size": 652},
+            {"name": "AxisLabel", "color":"11", "size": 636},
+            {"name": "CartesianAxes",  "color":"11","size": 6703}
+          ]
+        },
+        {
+          "name": "controls",
+          "color":"11",
+          "children": [
+            {"name": "AnchorControl", "color":"11", "size": 2138},
+            {"name": "ClickControl", "color":"11", "size": 3824},
+            {"name": "Control", "color":"11", "size": 1353},
+            {"name": "ControlList", "color":"11", "size": 4665},
+            {"name": "DragControl",  "color":"11","size": 2649},
+            {"name": "ExpandControl", "color":"11", "size": 2832},
+            {"name": "HoverControl", "color":"11", "size": 4896},
+            {"name": "IControl", "color":"11", "size": 763},
+            {"name": "PanZoomControl", "color":"11", "size": 5222},
+            {"name": "SelectionControl", "color":"11", "size": 7862},
+            {"name": "TooltipControl", "color":"11", "size": 8435}
+          ]
+        },
+        {
+          "name": "data",
+          "color":"11",
+          "children": [
+            {"name": "Data",  "color":"11","size": 20544},
+            {"name": "DataList",  "color":"11","size": 19788},
+            {"name": "DataSprite",  "color":"11","size": 10349},
+            {"name": "EdgeSprite", "color":"11", "size": 3301},
+            {"name": "NodeSprite", "color":"11", "size": 19382},
+            {
+              "name": "render",
+              "color":"11",
+              "children": [
+                {"name": "ArrowType",  "color":"11","size": 698},
+                {"name": "EdgeRenderer",  "color":"11","size": 5569},
+                {"name": "IRenderer", "color":"11", "size": 353},
+                {"name": "ShapeRenderer",  "color":"11","size": 2247}
+              ]
+            },
+            {"name": "ScaleBinding", "color":"11", "size": 11275},
+            {"name": "Tree", "color":"11", "size": 7147},
+            {"name": "TreeBuilder", "color":"11", "size": 9930}
+          ]
+        },
+        {
+          "name": "events",
+          "color":"11",
+          "children": [
+            {"name": "DataEvent", "color":"11", "size": 2313},
+            {"name": "SelectionEvent", "color":"11", "size": 1880},
+            {"name": "TooltipEvent",  "color":"11","size": 1701},
+            {"name": "VisualizationEvent", "color":"11", "size": 1117}
+          ]
+        },
+        {
+          "name": "legend",
+          "color":"11",
+          "children": [
+            {"name": "Legend",  "color":"11","size": 20859},
+            {"name": "LegendItem", "color":"11", "size": 4614},
+            {"name": "LegendRange", "color":"11", "size": 10530}
+          ]
+        },
+        {
+          "name": "operator",
+          "color":"11",
+          "children": [
+            {
+              "name": "distortion",
+              "color":"11",
+              "children": [
+                {"name": "BifocalDistortion",  "color":"11","size": 4461},
+                {"name": "Distortion", "color":"11", "size": 6314},
+                {"name": "FisheyeDistortion", "color":"11", "size": 3444}
+              ]
+            },
+            {
+              "name": "encoder",
+              "color":"11",
+              "children": [
+                {"name": "ColorEncoder",  "color":"11","size": 3179},
+                {"name": "Encoder",  "color":"11","size": 4060},
+                {"name": "PropertyEncoder", "color":"11", "size": 4138},
+                {"name": "ShapeEncoder",  "color":"11","size": 1690},
+                {"name": "SizeEncoder", "color":"11", "size": 1830}
+              ]
+            },
+            {
+              "name": "filter",
+              "color":"11",
+              "children": [
+                {"name": "FisheyeTreeFilter", "color":"11", "size": 5219},
+                {"name": "GraphDistanceFilter", "color":"11", "size": 3165},
+                {"name": "VisibilityFilter", "color":"11", "size": 3509}
+              ]
+            },
+            {"name": "IOperator",  "color":"11","size": 1286},
+            {
+              "name": "label",
+              "color":"11",
+              "children": [
+                {"name": "Labeler", "color":"11", "size": 9956},
+                {"name": "RadialLabeler",  "color":"11","size": 3899},
+                {"name": "StackedAreaLabeler", "color":"11", "size": 3202}
+              ]
+            },
+            {
+              "name": "layout",
+              "color":"11",
+              "children": [
+                {"name": "AxisLayout", "color":"11", "size": 6725},
+                {"name": "BundledEdgeRouter", "color":"11", "size": 3727},
+                {"name": "CircleLayout", "color":"11", "size": 9317},
+                {"name": "CirclePackingLayout",  "color":"11","size": 12003},
+                {"name": "DendrogramLayout", "color":"11", "size": 4853},
+                {"name": "ForceDirectedLayout", "color":"11", "size": 8411},
+                {"name": "IcicleTreeLayout", "color":"11", "size": 4864},
+                {"name": "IndentedTreeLayout", "color":"11", "size": 3174},
+                {"name": "Layout", "color":"11", "size": 7881},
+                {"name": "NodeLinkTreeLayout",  "color":"11","size": 12870},
+                {"name": "PieLayout",  "color":"11","size": 2728},
+                {"name": "RadialTreeLayout",  "color":"11","size": 12348},
+                {"name": "RandomLayout", "color":"11", "size": 870},
+                {"name": "StackedAreaLayout",  "color":"11","size": 9121},
+                {"name": "TreeMapLayout", "color":"11", "size": 9191}
+              ]
+            },
+            {"name": "Operator", "color":"11", "size": 2490},
+            {"name": "OperatorList", "color":"11", "size": 5248},
+            {"name": "OperatorSequence", "color":"11", "size": 4190},
+            {"name": "OperatorSwitch", "color":"11", "size": 2581},
+            {"name": "SortOperator", "color":"11", "size": 2023}
+          ]
+        },
+        {"name": "Visualization", "color":"11", "size": 16540}
+      ]
+    }
+  ]
+}

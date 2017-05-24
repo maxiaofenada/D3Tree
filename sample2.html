@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="d3/d3.js"></script>
+</head>
+<style>
+    .node circle {
+        stroke: steelblue;
+        stroke-width: 1px;
+        cursor: pointer;
+    }
+
+    .node {
+        font: 12px sans-serif;
+        display: block;
+    }
+
+    .hidenode {
+        font: 12px sans-serif;
+        display: none;
+    }
+
+    .link {
+        fill: none;
+        stroke: #ccc;
+        stroke-width: 1px;
+    }
+
+    /*控制下载图标的大小*/
+    #jiedian {
+        width: 43px;
+        height: 23px;
+    }
+</style>
+<script type="text/javascript" src="js/saveSvgAsPng.js"></script>
+<div>
+    <button onclick="saveDraw()"><img id="jiedian" src="img/timg.jpg"></button>
+</div>
+<body>
+<script type="text/javascript">
+    //图像区域大小
+    var R = 1200;
+    //动画持续时间
+    var duration = 300;
+    //节点编号
+    var index = 0;
+    //定义一个Tree对象,定义旋转角度和最大半径
+    var tree = d3.layout.tree()
+        .size([360, R / 2 - 120])
+        .separation(function (a, b) {
+            return (a.parent == b.parent ? 1 : 2) / a.depth;
+        });
+    //定义布局方向
+    var diagonal = d3.svg.diagonal()
+        .projection(function (d) {
+            var r = d.y, a = (d.x - 90) / 180 * Math.PI;
+            return [r * Math.cos(a), r * Math.sin(a)];
+        });
+    //新建画布，移动到圆心位置
+    var svg = d3.select("body").append("svg")
+    //添加id属性只是下载图片用和其他功能无关
+        .attr("id", "svg-huaBu")
+        .attr("width", R)
+        .attr("height", R)
+        .append("g")
+        .attr("transform", function (d) {
+            return "translate(" + R / 2 + "," + R / 2 + ")";
+        });
+    //根据JSON数据生成树
+    //flare.json换成接口地址，接口返回json
+    //必须访问网络资源，无法访问磁盘资源
+    d3.json("flare.json", function (error, data) {
+        var root = data;
+        //根据数据生成nodes集合
+        var nodes = tree.nodes(data);
+        //记录现在的位置
+        nodes.forEach(function (d) {
+            d.x0 = d.x;
+            d.y0 = d.y;
+            if (d.depth == 0) {
+                d.isLeaf = true;
+            }
+            //新增判断是否有子节点为其添加颜色或者当是顶级节点时也不显示加号或者减号
+            if (d.children == null && d._children == null) {
+                d.isLeaf = true;
+            }
+        });
+        //获取node集合的关系集合
+        var links = tree.links(nodes);
+        //根据node集合生成节点,添加id是为了区分是否冗余的节点
+        var node = svg.selectAll(".node")
+            .data(nodes, function (d) {
+                return d.id || (d.id = ++index);
+            });
+        //为关系集合设置贝塞尔曲线连接
+        var link = svg.selectAll(".link")
+            .data(links, function (d) {
+                return d.target.id;
+            })
+            .enter()
+            .append("path")
+            .attr("class", "link")
+            .attr("d", diagonal);
+        node.enter()
+            .append("g")
+            .attr("class", "node")
+            .attr("transform", function (d) {
+                return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+            })
+            .on("click", nodeClick);
+        //为节点添加圆形标记,如果有子节点为红色，否则绿色
+//        node.append("circle")
+//            .attr("r", 6.5);
+
+
+        //为节点添加圆形标记,如果有子节点为红色，否则绿色
+        node.append("circle")
+            .attr("r", function (d) {
+                //设置层级半径
+                return 10 - d.depth;
+            })
+            .style("fill", function (d) {
+                if (d.color == 1) {
+                    return "#FFA54F";
+                }
+                if (d.color == 2) {
+                    return "#9A32CD";
+                }
+                if (d.color == 3) {
+                    return "#8B8878";
+                }
+                if (d.color == 4) {
+                    return "#4169E1";
+                }
+                if (d.color == 5) {
+                    return "#EEEE00";
+                }
+                if (d.color == 6) {
+                    return "#EEAEEE";
+                }
+                if (d.color == 7) {
+                    return "#EE3A8C";
+                }
+                if (d.color == 8) {
+                    return "#EE00EE";
+                }
+                if (d.color == 9) {
+                    return "#DB7093";
+                }
+                if (d.color == 10) {
+                    return "#CAFF70";
+                }
+                if (d.color == 11) {
+                    return "#BFEFFF";
+                }
+            });
+        //为节点添加说明文字
+        node.append("text")
+            .attr("dy", ".4em")
+            .text(function (d) {
+                return d.name;
+            })
+            .attr("text-anchor", function (d) {
+                return d.x < 180 ? "start" : "end";
+            })
+            .attr("transform", function (d) {
+                return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)";
+            });
+        //针对每个node添加path，根据是否有子节点来赋予d属性不同的值
+        node.append("path")
+            .attr('d', function (d) {
+                //判断是否有子节点若有则是符号+展开则是减，若没有子节点则是令一个图形
+                if (d.isLeaf) {
+                    //原来的形状
+                    return null;
+                } else {
+                    //加号与减号
+                    return d._children ? "M-6 -1 H-1 V-6 H1 V-1 H6 V1 H1 V6 H-1 V1 H-6 Z" : "M-6 -1 H6 V1 H-6 Z";
+                }
+            })
+            //覆盖原来的形状，使加号与减号显现
+            .transition()
+            .duration(500)
+            .attr("style", "fill: none; stroke-opacity: 1; stroke: #9ecae1; stroke-width: 1px;");
+
+
+        //点击的话，隐藏或者显示子节点
+        function nodeClick(d) {
+            //判断若不是根节点则可以点击事件
+            if (d.depth > 0) {
+                if (d.children) {
+                    d._children = d.children;
+                    d.children = null;
+                }
+                else {
+                    d.children = d._children;
+                    d._children = null;
+                }
+            }
+            //新增判断是否有子节点为其添加颜色
+//            if (d.children == null && d._children == null) {
+//                d.isLeaf = false;
+//            }
+            //若不是根节点则可以触发事件
+//            if (d.depth != 0 &&d.parent()!=Object) {
+            update(d);
+//            }
+
+        }
+
+        //更新显示
+        function update(source) {
+            //取得现有的节点数据,因为设置了Children属性，没有Children的节点将被删除
+            var nodes = tree.nodes(root).reverse();
+            var links = tree.links(nodes);
+            //为节点更新数据
+            var node = svg.selectAll("g.node")
+                .data(nodes, function (d) {
+                    return d.id || (d.id = ++index);
+                });
+            //为链接更新数据
+            var link = svg.selectAll("path.link").data(links, function (d) {
+                return d.target.id;
+            });
+//            link.enter().selectAll("path").remove();
+
+            svg.select("g").append("path")
+                .attr("class", "link newPath")
+                .attr("d", function (d) {
+                    var o = {x: source.x, y: source.y};
+                    return diagonal({source: o, target: o});
+                });
+
+            //更新链接
+//            link.enter()
+//                .append("path")
+//                .attr("class", "link newPath")
+//                .attr("d", function (d) {
+//                    var o = {x: source.x, y: source.y};
+//                    return diagonal({source: o, target: o});
+//                });
+//            link.transition()
+//                .duration(duration)
+//                .attr("d", diagonal);
+//            //移除无用的链接
+//            link.exit()
+//                .transition()
+//                .duration(duration)
+//                .attr("d", function (d) {
+//                    var o = {x: source.x, y: source.y};
+//                    return diagonal({source: o, target: o});
+//                })
+//                .remove();
+            //更新节点集合
+            var nodeEnter = node.enter()
+                .append("g")
+                .attr("class", "node")
+                .attr("transform", function (d) {
+                    return "rotate(" + (source.x0 - 90) + ")translate(" + source.y0 + ")";
+                })
+                .on("click", nodeClick);
+
+            //每次添加之前先删除，避免文字重叠
+            node.selectAll("text").remove();
+
+
+            node.selectAll("circle").remove();
+            node.selectAll("path").remove();
+
+            //为节点添加圆形标记,如果有子节点为红色，否则绿色
+            node.append("circle")
+                .attr("r", function (d) {
+                    return 10 - d.depth;
+                })
+                .style("fill", function (d) {
+                    if (d.color == 1) {
+                        return "#FFA54F";
+                    }
+                    if (d.color == 2) {
+                        return "#9A32CD";
+                    }
+                    if (d.color == 3) {
+                        return "#8B8878";
+                    }
+                    if (d.color == 4) {
+                        return "#4169E1";
+                    }
+                    if (d.color == 5) {
+                        return "#EEEE00";
+                    }
+                    if (d.color == 6) {
+                        return "#EEAEEE";
+                    }
+                    if (d.color == 7) {
+                        return "#EE3A8C";
+                    }
+                    if (d.color == 8) {
+                        return "#EE00EE";
+                    }
+                    if (d.color == 9) {
+                        return "#DB7093";
+                    }
+                    if (d.color == 10) {
+                        return "#CAFF70";
+                    }
+                    if (d.color == 11) {
+                        return "#BFEFFF";
+                    }
+                });
+
+
+            //针对每个node添加path，根据是否有子节点来赋予d属性不同的值
+            node.append("path")
+                .attr('d', function (d) {
+                    //判断是否有子节点若有则是符号+展开则是减，若没有子节点则是令一个图形
+                    if (d.isLeaf) {
+                        //原来的形状
+                        return null;
+                    } else {
+                        //加号与减号
+                        return d._children ? "M-6 -1 H-1 V-6 H1 V-1 H6 V1 H1 V6 H-1 V1 H-6 Z" : "M-6 -1 H6 V1 H-6 Z";
+                    }
+                })
+                .attr("class", "newPath")
+                //覆盖原来的形状，使加号与减号显现
+                .transition()
+                .duration(500)
+                .attr("style", "fill: none; stroke-opacity: 1; stroke: #9ecae1; stroke-width: 1px;");
+
+
+            //节点动画
+            var nodeUpdate = node.transition()
+                .duration(duration)
+                .attr("transform", function (d) {
+                    return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")";
+                });
+            //将无用的子节点删除
+            var nodeExit = node.exit()
+                .transition()
+                .duration(duration)
+                .attr("transform", function (d) {
+                    return "rotate(" + (source.x - 90) + ")translate(" + source.y + ")";
+                })
+                .remove();
+            //记录下当前位置,为下次动画记录初始值
+            nodes.forEach(function (d) {
+                d.x0 = d.x;
+                d.y0 = d.y;
+            });
+            //点击事件使为节点添加说明文字
+            node.append("text")
+                .attr("dy", ".4em")
+                .text(function (d) {
+                    return d.name;
+                })
+                .transition()
+                .duration(400)
+                .attr("text-anchor", function (d) {
+                    return d.x < 180 ? "start" : "end";
+                })
+                .attr("transform", function (d) {
+                    return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)";
+                });
+        }
+    });
+
+    //点击下载图片
+    function saveDraw() {
+        saveSvgAsPng(document.getElementById("svg-huaBu"), "diagram.png");
+    }
+
+
+</script>
+</body>
+</html>
