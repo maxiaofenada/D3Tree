@@ -199,14 +199,7 @@
                     d._children = null;
                 }
             }
-            //新增判断是否有子节点为其添加颜色
-//            if (d.children == null && d._children == null) {
-//                d.isLeaf = false;
-//            }
-            //若不是根节点则可以触发事件
-//            if (d.depth != 0 &&d.parent()!=Object) {
             update(d);
-//            }
 
         }
 
@@ -226,33 +219,34 @@
             });
 //            link.enter().selectAll("path").remove();
 
-            svg.select("g").append("path")
-                .attr("class", "link newPath")
-                .attr("d", function (d) {
-                    var o = {x: source.x, y: source.y};
-                    return diagonal({source: o, target: o});
-                });
-
-            //更新链接
-//            link.enter()
-//                .append("path")
+//            svg.select("g").append("path")
 //                .attr("class", "link newPath")
 //                .attr("d", function (d) {
 //                    var o = {x: source.x, y: source.y};
 //                    return diagonal({source: o, target: o});
 //                });
-//            link.transition()
-//                .duration(duration)
-//                .attr("d", diagonal);
-//            //移除无用的链接
-//            link.exit()
-//                .transition()
-//                .duration(duration)
-//                .attr("d", function (d) {
-//                    var o = {x: source.x, y: source.y};
-//                    return diagonal({source: o, target: o});
-//                })
-//                .remove();
+
+            //更新链接
+            link.enter()
+                .append("path")
+                .attr("class", "link newPath")
+                .attr("d", function (d) {
+                    var o = {x: source.x, y: source.y};
+                    return diagonal({source: o, target: o});
+                });
+            link.transition()
+                .duration(duration)
+                .attr("d", diagonal);
+            //移除无用的链接
+            link.exit()
+                .transition()
+                .duration(duration)
+                .attr("d", function (d) {
+                    var o = {x: source.x, y: source.y};
+                    return diagonal({source: o, target: o});
+                })
+                .remove();
+
             //更新节点集合
             var nodeEnter = node.enter()
                 .append("g")
